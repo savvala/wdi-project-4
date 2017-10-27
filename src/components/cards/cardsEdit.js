@@ -4,7 +4,7 @@ import Auth from '../../lib/Auth';
 
 import CardsForm from './CardsForm';
 
-class CardsNew extends React.Component {
+class CardsEdit extends React.Component {
   state = {
     card: {
       fullName: '',
@@ -16,12 +16,11 @@ class CardsNew extends React.Component {
     errors: {}
   };
 
-  componentWillMount() {
-    console.log('Component will mount');
-  }
-
   componentDidMount() {
-    console.log('Component did mount');
+    Axios
+      .get(`/api/cards/${this.props.match.params.id}`)
+      .then(res => this.setState({ card: res.data }))
+      .catch(err => console.log(err));
   }
 
   handleChange = ({ target: { name, value } }) => {
@@ -33,10 +32,10 @@ class CardsNew extends React.Component {
     e.preventDefault();
 
     Axios
-      .post('/api/cards', this.state.card, {
+      .put(`/api/cards/${this.props.match.params.id}`, this.state.card, {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
       })
-      .then(() => this.props.history.push('/cards'))
+      .then(res => this.props.history.push(`/cards/${res.data.id}`))
       .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
@@ -53,4 +52,4 @@ class CardsNew extends React.Component {
   }
 }
 
-export default CardsNew;
+export default CardsEdit;

@@ -7,7 +7,7 @@ const cardSchema = mongoose.Schema({
   business: { type: String },
   businessAddress: { type: String },
   phoneNumber: { type: String },
-  user: {type: mongoose.Schema.ObjectId, ref: 'User'}
+  user: { type: mongoose.Schema.ObjectId, ref: 'User' }
 });
 
-module.exports = mongoose.model('card', cardSchema);
+module.exports = mongoose.model('Card', cardSchema);

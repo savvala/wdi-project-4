@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 
 import Navbar from './components/utility/Navbar';
@@ -15,7 +15,7 @@ class App extends React.Component {
     return (
       <Router>
         <div className="container">
-          <h1>TR-AID</h1>
+          <h1><Link to="/cards">TR-AID</Link></h1>
           <Navbar/>
           <main>
             <Routes/>

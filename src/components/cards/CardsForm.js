@@ -7,17 +7,17 @@ function CardsForm({ handleSubmit, handleChange, card, errors }) {
       <div className="page-banner col-md-12">
       </div>
       <form onSubmit={handleSubmit} className="col-md-6">
-        <div className={errors.name ? 'form-group has-error' : 'form-group'}>
-          <label htmlFor="name">Full Name</label>
+        <div className={errors.fullName ? 'form-group has-error' : 'form-group'}>
+          <label htmlFor="fullName">Full Name</label>
           <input
             type="text"
             className="form-control"
-            id="name"
-            name="name"
+            id="fullName"
+            name="fullName"
             value={card.fullName}
             onChange={handleChange}
           />
-          {errors.title && <small className="has-error">{errors.name}</small>}
+          {errors.fullName && <small className="has-error">{errors.fullName}</small>}
         </div>
         {/* <div className={errors.image ? 'form-group has-error' : 'form-group'}>
           <label htmlFor="image">Image</label>

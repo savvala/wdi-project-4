@@ -6,6 +6,12 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: 'Password is required' }
 });
 
+userSchema.virtual('cards', {
+  ref: 'Card',
+  foreignField: 'user',
+  localField: '_id'
+});
+
 userSchema
   .virtual('passwordConfirmation')
   .set(function setPasswordConfirmation(passwordConfirmation) {

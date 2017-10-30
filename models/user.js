@@ -3,7 +3,8 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
   email: { type: String, required: 'Email is required', unique: 'That email is already taken' },
-  password: { type: String, required: 'Password is required' }
+  password: { type: String, required: 'Password is required' },
+  collected: [{ type: mongoose.Schema.ObjectId, ref: 'Card' }]
 });
 
 userSchema.virtual('cards', {
@@ -19,7 +20,7 @@ userSchema
   });
 
 userSchema.pre('validate', function checkPassword(next) {
-  if(!this._passwordConfirmation || this._passwordConfirmation !== this.password) {
+  if(this.isModified('password') && this._passwordConfirmation !== this.password) {
     this.invalidate('passwordConfirmation', 'Passwords do not match');
   }
   next();

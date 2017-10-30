@@ -1,4 +1,5 @@
 const Card = require('../models/card');
+const User = require('../models/user');
 
 function cardsIndex(req, res, next) {
   Card
@@ -9,6 +10,8 @@ function cardsIndex(req, res, next) {
 }
 
 function cardsCreate(req, res, next) {
+  req.body.user = req.currentUser;
+
   Card
     .create(req.body)
     .then(card => res.status(201).json(card))
@@ -18,6 +21,7 @@ function cardsCreate(req, res, next) {
 function cardsShow(req, res, next) {
   Card
     .findById(req.params.id)
+    .populate('user')
     .exec()
     .then((card) => {
       if(!card) return res.notFound();
@@ -51,10 +55,49 @@ function cardsDelete(req, res, next) {
     .catch(next);
 }
 
+function cardsTrade(req, res, next) {
+  User
+    .findById(req.currentUser.id)
+    .exec()
+    .then((user) => {
+      if(!user) return res.notFound();
+      // push the card if from the URL params into the user's collected array and then save the user
+      user.collected.push(req.params.id);
+      return user.save();
+    })
+    .then(user => {
+      // we need to populate the collected array after updating the user so that the view updates accordingly
+      return User.populate(user, { path: 'collected' });
+    })
+    .then((user) => {
+      // at this point you need to update the other user
+      res.json(user);
+    })
+    .catch(next);
+}
+
+function cardsRemove(req, res, next) {
+  User
+    .findById(req.currentUser.id)
+    .exec()
+    .then((user) => {
+      if(!user) return res.notFound();
+      // find the position of the card in the user's collected array
+      const index = user.collected.indexOf(req.params.id);
+      // splice one element out of the array from that index
+      user.collected.splice(index, 1);
+      return user.save();
+    })
+    .then(user => res.json(user))
+    .catch(next);
+}
+
 module.exports = {
   index: cardsIndex,
   create: cardsCreate,
   show: cardsShow,
   update: cardsUpdate,
-  delete: cardsDelete
+  delete: cardsDelete,
+  trade: cardsTrade,
+  remove: cardsRemove
 };

@@ -23,8 +23,9 @@ class Login extends React.Component {
     Axios.post('/api/login', this.state.credentials)
       .then((res) => {
         Auth.setToken(res.data.token);
+        console.log(res.data);
         if(res.data.user.cards.length === 0) return this.props.history.push('/cards/new');
-        return this.props.history.push('/cards/index');
+        else this.props.history.push('/cards');
       })
       .catch(() => this.setState({ error: 'Invalid credentials' }));
   }

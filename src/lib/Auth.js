@@ -11,6 +11,10 @@ class Auth {
     return !!this.getToken();
   }
 
+  static ownedByUser(card) {
+    return card.user && card.user.id === this.getPayload().userId;
+  }
+
   static logout() {
     localStorage.removeItem('token');
   }

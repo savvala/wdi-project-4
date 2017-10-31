@@ -20,6 +20,9 @@ router.route('/register')
 router.route('/login')
   .post(auth.login);
 
+router.route('/users')
+  .get(users.index);
+
 router.route('/profile')
   .get(secureRoute, users.show);
 

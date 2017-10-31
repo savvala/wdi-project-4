@@ -8,9 +8,10 @@ import CardsShow from '../cards/CardsShow';
 import CardsEdit from '../cards/CardsEdit';
 import NoRoute from './NoRoute';
 
-
 import Login from '../auth/Login';
 import Register from '../auth/Register';
+
+import Message from '../trade/Message';
 
 const Routes = () => {
   return (
@@ -22,6 +23,7 @@ const Routes = () => {
       <ProtectedRoute exact path="/cards/:id/edit" component={CardsEdit} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
+      <Route exact path="/message" component={Message} />
       <Route component={NoRoute} />
     </Switch>
   );

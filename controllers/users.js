@@ -1,5 +1,14 @@
 const User = require('../models/user');
 
+function usersIndex(req, res, next) {
+  User
+    .find()
+    .populate('collected cards')
+    .exec()
+    .then(users => res.json(users))
+    .catch(next);
+}
+
 function usersShow(req, res, next) {
   User
     .findById(req.currentUser.id)
@@ -13,5 +22,6 @@ function usersShow(req, res, next) {
 }
 
 module.exports = {
-  show: usersShow
+  show: usersShow,
+  index: usersIndex
 };

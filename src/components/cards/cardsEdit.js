@@ -39,6 +39,11 @@ class CardsEdit extends React.Component {
       .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
+  const Customize = () => {
+  const Font1 = {
+
+  };
+
   render() {
     return (
       <CardsForm

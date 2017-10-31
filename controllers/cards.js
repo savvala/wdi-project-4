@@ -56,9 +56,24 @@ function cardsDelete(req, res, next) {
 }
 
 function cardsTrade(req, res, next) {
-  User
-    .findById(req.currentUser.id)
+  const currentUsersCard = req.currentUser.cards[0];
+  // find the cards user and add the currently logged in user's card into their array
+  Card
+    .findById(req.params.id)
+    .populate('user')
     .exec()
+    .then(card => {
+      if(!card) return res.notFound();
+
+      // if the card's user already has your card in their collection, return false (don't add it again)
+      if (card.user.collected.find(card => card.toString() === currentUsersCard.id)) return false;
+      card.user.collected.push(currentUsersCard);
+      return card.user.save();
+    })
+    .then(() => {
+      return User
+        .findById(req.currentUser.id);
+    })
     .then((user) => {
       if(!user) return res.notFound();
       // push the card if from the URL params into the user's collected array and then save the user

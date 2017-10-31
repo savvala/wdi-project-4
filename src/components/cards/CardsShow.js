@@ -78,7 +78,7 @@ class CardsShow extends React.Component {
             <i className="fa fa-trash" aria-hidden="true"></i>Trade Cards
           </button>}
           {Auth.isAuthenticated() && !Auth.ownedByUser(this.state.card) && this.inCollection() && <button className="main-button" onClick={this.removeCard}>
-            <i className="fa fa-trash" aria-hidden="true"></i>Remove Cards
+            <i className="fa fa-trash" aria-hidden="true"></i>Remove Card
           </button>}
         </div>
       </div>

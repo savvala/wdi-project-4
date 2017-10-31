@@ -3,6 +3,7 @@ const cards  = require('../controllers/cards');
 const auth  = require('../controllers/auth');
 const users  = require('../controllers/users');
 const secureRoute = require('../lib/secureRoute');
+const twilio = require('../controllers/twilio');
 
 router.route('/cards')
   .get(secureRoute, cards.index)
@@ -25,6 +26,9 @@ router.route('/profile')
 router.route('/cards/:id/trade')
   .get(secureRoute, cards.trade)
   .delete(secureRoute, cards.remove);
+
+router.route('/message')
+  .post(secureRoute, twilio.send);
 
 router.all('/*', (req, res) => res.notFound());
 

@@ -18,7 +18,7 @@ const Routes = () => {
       <Route exact path="/" component={Register} />
       <ProtectedRoute exact path="/cards/new" component={CardsNew} />
       <ProtectedRoute exact path="/cards" component={CardsIndex} />
-      <Route exact path="/cards/:id" component={CardsShow} />
+      <ProtectedRoute exact path="/cards/:id" component={CardsShow} />
       <ProtectedRoute exact path="/cards/:id/edit" component={CardsEdit} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />

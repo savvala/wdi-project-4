@@ -7,7 +7,10 @@ const cardSchema = mongoose.Schema({
   business: { type: String },
   businessAddress: { type: String },
   phoneNumber: { type: String },
-  user: { type: mongoose.Schema.ObjectId, ref: 'User' }
+  user: { type: mongoose.Schema.ObjectId, ref: 'User' },
+  fontStyle: {type: String},
+  fontColour: {type: String},
+  cardColour: {type: String}
 });
 
 module.exports = mongoose.model('Card', cardSchema);

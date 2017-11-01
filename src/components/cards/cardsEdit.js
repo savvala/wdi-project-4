@@ -11,7 +11,10 @@ class CardsEdit extends React.Component {
       jobTitle: '',
       business: '',
       businessAddress: '',
-      phoneNumber: ''
+      phoneNumber: '',
+      fontStyle: '',
+      fontColour: '',
+      cardColour: ''
     },
     errors: {}
   };
@@ -19,7 +22,7 @@ class CardsEdit extends React.Component {
   componentDidMount() {
     Axios
       .get(`/api/cards/${this.props.match.params.id}`)
-      .then(res => this.setState({ card: res.data }))
+      .then(res => this.setState({ card: res.data }, () => console.log(this.state)))
       .catch(err => console.log(err));
   }
 
@@ -39,10 +42,6 @@ class CardsEdit extends React.Component {
       .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
-  const Customize = () => {
-  const Font1 = {
-
-  };
 
   render() {
     return (

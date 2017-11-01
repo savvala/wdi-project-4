@@ -60,24 +60,34 @@ class CardsShow extends React.Component {
   }
 
   render() {
+    const { card } = this.state;
+
+    const styles = {
+      fontFamily: card.fontStyle,
+      color: card.fontColour,
+      backgroundColor: card.cardColour
+    };
+
     return (
       <div className="row">
         <div className="col-md-6">
-          <h2>{this.state.card.fullName}</h2>
-          <h2>{this.state.card.jobTitle}</h2>
-          <h3>{this.state.card.business}</h3>
-          <h4>{this.state.card.businessAdress} {this.state.card.phoneNumber}</h4>
+          <div className="card" style={styles}>
+            <h2>{card.fullName}</h2>
+            <h2>{card.jobTitle}</h2>
+            <h3>{card.business}</h3>
+            <h4>{card.businessAdress} {card.phoneNumber}</h4>
+          </div>
           {' '}
-          {Auth.isAuthenticated() && Auth.ownedByUser(this.state.card) && <Link to={`/cards/${this.state.card.id}/edit`} className="standard-button">
+          {Auth.isAuthenticated() && Auth.ownedByUser(card) && <Link to={`/cards/${card.id}/edit`} className="standard-button">
             <i className="fa fa-pencil" aria-hidden="true"></i>Edit Your Card
           </Link>}
-          {Auth.isAuthenticated() && Auth.ownedByUser(this.state.card) && <button className="main-button" onClick={this.deleteCard}>
+          {Auth.isAuthenticated() && Auth.ownedByUser(card) && <button className="main-button" onClick={this.deleteCard}>
             <i className="fa fa-trash" aria-hidden="true"></i>Delete Your Card
           </button>}
-          {Auth.isAuthenticated() && !Auth.ownedByUser(this.state.card) && !this.inCollection() && <button className="main-button" onClick={this.tradeCard}>
+          {Auth.isAuthenticated() && !Auth.ownedByUser(card) && !this.inCollection() && <button className="main-button" onClick={this.tradeCard}>
             <i className="fa fa-trash" aria-hidden="true"></i>Trade Cards
           </button>}
-          {Auth.isAuthenticated() && !Auth.ownedByUser(this.state.card) && this.inCollection() && <button className="main-button" onClick={this.removeCard}>
+          {Auth.isAuthenticated() && !Auth.ownedByUser(card) && this.inCollection() && <button className="main-button" onClick={this.removeCard}>
             <i className="fa fa-trash" aria-hidden="true"></i>Remove Card
           </button>}
         </div>

@@ -11,7 +11,10 @@ class CardsNew extends React.Component {
       jobTitle: '',
       business: '',
       businessAddress: '',
-      phoneNumber: ''
+      phoneNumber: '',
+      fontStyle: '',
+      fontColour: '',
+      cardColour: ''
     },
     errors: {}
   };

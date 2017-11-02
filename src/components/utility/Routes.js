@@ -6,6 +6,7 @@ import CardsNew from '../cards/CardsNew';
 import CardsIndex from '../cards/CardsIndex';
 import CardsShow from '../cards/CardsShow';
 import CardsEdit from '../cards/CardsEdit';
+import UsersShow from '../users/UsersShow';
 import NoRoute from './NoRoute';
 
 import Login from '../auth/Login';
@@ -21,6 +22,7 @@ const Routes = () => {
       <ProtectedRoute exact path="/cards" component={CardsIndex} />
       <ProtectedRoute exact path="/cards/:id" component={CardsShow} />
       <ProtectedRoute exact path="/cards/:id/edit" component={CardsEdit} />
+      <ProtectedRoute exact path="/profile" component={UsersShow} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/message" component={Message} />

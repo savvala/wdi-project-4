@@ -12,7 +12,7 @@ function usersIndex(req, res, next) {
 function usersShow(req, res, next) {
   User
     .findById(req.currentUser.id)
-    .populate('collected')
+    .populate('collected cards')
     .exec()
     .then(user => {
       if(!user) return res.notFound();

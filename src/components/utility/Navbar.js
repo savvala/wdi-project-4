@@ -15,6 +15,7 @@ const Navbar = ({ history }) => {
     <nav>
       <div className="left">
         {Auth.isAuthenticated() && <Link to="/message" className="nav-link">Trade Your Card</Link>}
+        {Auth.isAuthenticated() && <Link to="/profile" className="nav-link">Profile</Link>}
       </div>
       <Link to="/cards" className="traid">CONTACT</Link>
       <div className="right">

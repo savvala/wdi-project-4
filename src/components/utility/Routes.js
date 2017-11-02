@@ -5,7 +5,7 @@ import ProtectedRoute from '../utility/ProtectedRoute';
 import CardsNew from '../cards/CardsNew';
 import CardsIndex from '../cards/CardsIndex';
 import CardsShow from '../cards/CardsShow';
-import CardsEdit from '../cards/Cards_Edit';
+import CardsEdit from '../cards/CardsEdit';
 import NoRoute from './NoRoute';
 
 import Login from '../auth/Login';

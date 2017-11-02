@@ -29,7 +29,7 @@ class CardsIndex extends React.Component {
   render() {
     return (
       <div>
-        <h1>All Cards (to be hidden later)</h1>
+        {/* <h1>All Cards (to be hidden later)</h1>
         <div className="row">
           {this.state.allCards.map(card => {
             return(
@@ -41,7 +41,7 @@ class CardsIndex extends React.Component {
               </div>
             );
           })}
-        </div>
+        </div> */}
 
         <h1>Collected Cards</h1>
         <div className="row">

@@ -27,18 +27,6 @@ function CardsForm({ handleSubmit, handleChange, card, errors }) {
               />
               {errors.fullName && <small className="has-error">{errors.fullName}</small>}
             </div>
-            {/* <div className={errors.image ? 'form-group has-error' : 'form-group'}>
-            <label htmlFor="image">Image</label>
-            <input
-              type="text"
-              className="form-control"
-              id="image"
-              name="image"
-              value={card.image}
-              onChange={handleChange}
-            />
-            {errors.image && <small className="has-error">{errors.image}</small>}
-          </div> */}
             <div className={errors.jobTitle ? 'form-group has-error' : 'form-group'}>
               <label htmlFor="jobTitle"></label>
               <input
@@ -131,7 +119,13 @@ function CardsForm({ handleSubmit, handleChange, card, errors }) {
             >
               <option>Libre Baskerville</option>
               <option>Quicksand</option>
-              <option>Crimson Text</option>
+              <option>Lobster</option>
+              <option>Hind</option>
+              <option>Contrail One</option>
+              <option>Anton</option>
+              <option>Playfair Display SC</option>
+              <option>Luckiest Guy</option>
+              <option>Share</option>
             </select>
             {errors.category && <small className="has-error">{errors.phoneNumber}</small>}
           </div>

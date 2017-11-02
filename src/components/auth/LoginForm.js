@@ -3,7 +3,7 @@ import React from 'react';
 const LoginForm = ({ handleChange, handleSubmit, credentials, error }) => {
   return (
     <form onSubmit={handleSubmit}>
-      <div className="form-group">
+      <div className="col-md-6 offset-md-3">
         <input
           type="text"
           name="email"
@@ -13,7 +13,7 @@ const LoginForm = ({ handleChange, handleSubmit, credentials, error }) => {
           className="form-control"
         />
       </div>
-      <div className="form-group">
+      <div className="col-md-6 offset-md-3">
         <input
           type="password"
           name="password"

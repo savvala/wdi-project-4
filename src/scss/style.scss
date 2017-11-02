@@ -1,5 +1,258 @@
 @import url('https://fonts.googleapis.com/css?family=Crimson+Text|Libre+Baskerville|Quicksand');
+@import url('https://fonts.googleapis.com/css?family=Work+Sans');
+
+@import 'bootstrap/bootstrap-grid';
+
+
+* {
+  box-sizing: border-box;
+}
 
 body {
-  font-family: Crimson Text, serif;
+  font-family: 'Work Sans', sans-serif;
+  margin: 0;
+}
+
+button, input{
+  font-family: 'Work Sans', sans-serif;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  .right {
+    a {
+      margin-left: 20px;
+    }
+  }
+  .nav-link {
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -3px;
+      left: 0;
+      background-color: #000;
+      visibility: hidden;
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transition: all 0.3s ease-in-out 0s;
+      transition: all 0.3s ease-in-out 0s;
+    }
+    &:hover:before {
+      visibility: visible;
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+    }
+  }
+  .traid {
+    font-size: 60px;
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 991px) {
+  [class*="col-lg"] {
+    margin-bottom: 20px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  nav {
+    display: block;
+    position: relative;
+    height: 120px;
+    .left {
+      position: absolute;
+      top: 85px;
+      left: 0;
+    }
+    .right {
+      position: absolute;
+      top: 85px;
+      right: 0;
+    }
+    .traid {
+      font-size: 55px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  [class*="col-md"] {
+    margin-bottom: 20px;
+  }
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+button, .button {
+  border: 1px solid black;
+  border-radius: 3px;
+  background-color: white;
+  padding: 10px 12px;
+  font-size: 14px;
+  text-decoration: none;
+  color: black;
+  margin-right: 5px;
+  display: inline-block;
+  cursor: pointer;
+  &:hover {
+    border-width: 2px;
+    padding: 9px 11px;
+  }
+}
+
+form {
+  .non-card {
+    label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    input {
+      margin-bottom: 10px;
+      &[type="text"], &[type="password"], &[type="number"] {
+        border: 1px solid black;
+        background-color: white;
+        padding: 8px 12px;
+        font-size: 14px;
+        width: 100%;
+        border-radius: 3px;
+        &:focus {
+          border-width: 2px;
+          padding: 7px 11px;
+          outline: none;
+        }
+      }
+    }
+    select {
+      margin-bottom: 10px;
+      border: 1px solid black;
+      background-color: white;
+      font-size: 14px;
+      width: 100%;
+      height: 34px;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.edit {
+  a {
+    color: Black;
+    text-decoration: none;
+  }
+}
+
+// .form {
+//   margin: 0 auto;
+//   max-width: 800px;
+// }
+
+.cardForm {
+  // margin: 0 auto;
+  // max-width: 800px;
+  border-radius: 5px;
+  padding-top: 60%;
+  position: relative;
+  border: 1px solid lightgrey;
+  .form-control {
+    position: absolute;
+    border: none;
+    width: 90%;
+    left: 5%;
+    border-bottom: 3px solid transparent;
+    &:focus {
+      outline: none !important;
+      border-bottom: 3px solid grey;
+    }
+  }
+  .fa {
+    position: absolute;
+    &.fa-twitter {
+      right: 10%;
+      top: 50%;
+      font-size: 4vw;
+      // color: red;
+    }
+    &.fa-linkedin {
+      right: 10%;
+      top: 70%;
+      font-size: 4vw;
+      // color: red;
+    }
+  }
+  #fullName {
+    top: 8%;
+    font-size: 9vw;
+    position: absolute;
+    left: 5%;
+  }
+  #jobTitle {
+    top: 32%;
+    font-size: 6vw;
+    position: absolute;
+    left: 5%;
+  }
+  #business {
+    top: 50%;
+    font-size: 4vw;
+    position: absolute;
+    left: 5%;
+  }
+  #email {
+    top: 65%;
+    font-size: 4vw;
+    position: absolute;
+    left: 5%;
+  }
+  #businessAddress {
+    top: 80%;
+    font-size: 3vw;
+    position: absolute;
+    left: 5%;
+  }
+  #phoneNumber {
+    top: 90%;
+    font-size: 2vw;
+    position: absolute;
+    left: 5%;
+  }
+  // styles over 800px
+  @media only screen and (min-width: 992px) {
+    #fullName {
+      top: 8%;
+      font-size: 4.5vw;
+    }
+    #jobTitle {
+      top: 32%;
+      font-size: 3vw;
+    }
+    #business {
+      top: 50%;
+      font-size: 2vw;
+    }
+    #email {
+      top: 65%;
+      font-size: 2vw;
+    }
+    #businessAddress {
+      top: 80%;
+      font-size: 1.5vw;
+    }
+    #phoneNumber {
+      top: 90%;
+      font-size: 1vw;
+    }
+  }
 }

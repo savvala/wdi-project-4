@@ -11,10 +11,15 @@ class CardsEdit extends React.Component {
       jobTitle: '',
       business: '',
       businessAddress: '',
+      email: '',
       phoneNumber: '',
       fontStyle: '',
       fontColour: '',
-      cardColour: ''
+      cardColour: '',
+      twitter: '',
+      twitterColour: '',
+      linkedIn: '',
+      linkedInColour: ''
     },
     errors: {}
   };

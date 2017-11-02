@@ -13,10 +13,15 @@ const Navbar = ({ history }) => {
 
   return(
     <nav>
-      {!Auth.isAuthenticated() && <Link to="/login" className="standard-button">Login</Link>}
-      {!Auth.isAuthenticated() && <Link to="/register" className="standard-button">Register</Link>}
-      {Auth.isAuthenticated() && <Link to="/message" className="standard-button">Trade Your Card</Link>}
-      {Auth.isAuthenticated() && <a href="#" onClick={logout} className="standard-button">Logout</a>}
+      <div className="left">
+        {Auth.isAuthenticated() && <Link to="/message" className="nav-link">Trade Your Card</Link>}
+      </div>
+      <Link to="/cards" className="traid">CONTACT</Link>
+      <div className="right">
+        {!Auth.isAuthenticated() && <Link to="/login" className="nav-link">Login</Link>}
+        {!Auth.isAuthenticated() && <Link to="/register" className="nav-link">Register</Link>}
+        {Auth.isAuthenticated() && <a href="#" onClick={logout} className="nav-link">Logout</a>}
+      </div>
     </nav>
   );
 };

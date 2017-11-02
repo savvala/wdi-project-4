@@ -70,25 +70,31 @@ class CardsShow extends React.Component {
 
     return (
       <div className="row">
-        <div className="col-md-6">
-          <div className="card" style={styles}>
-            <h2>{card.fullName}</h2>
-            <h2>{card.jobTitle}</h2>
-            <h3>{card.business}</h3>
-            <h4>{card.businessAdress} {card.phoneNumber}</h4>
+        <div className="col-lg-6">
+          <div className="cardForm" style={styles}>
+            <div id="fullName">{card.fullName}</div>
+            <div id="jobTitle">{card.jobTitle}</div>
+            <div id="business">{card.business}</div>
+            <div id="businessAddress">{card.businessAddress}</div>
+            <div id="email">{card.email}</div>
+            <div id="phoneNumber">{card.phoneNumber}</div>
+            <a href={`https://twitter.com/${card.twitter}`} style={{color: card.twitterColour}} target="_blank"><i className="fa fa-twitter" id="twitter" aria-hidden="true"></i></a>
+            <a href={`https://www.linkedin.com/in/${card.linkedIn}`} style={{color: card.linkedInColour}}><i className="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
           </div>
+        </div>
+        <div className="col-lg-6">
           {' '}
-          {Auth.isAuthenticated() && Auth.ownedByUser(card) && <Link to={`/cards/${card.id}/edit`} className="standard-button">
-            <i className="fa fa-pencil" aria-hidden="true"></i>Edit Your Card
+          {Auth.isAuthenticated() && Auth.ownedByUser(card) && <Link className="edit button" to={`/cards/${card.id}/edit`}>
+            <i className="fa fa-pencil" aria-hidden="true"></i> Edit Your Card
           </Link>}
           {Auth.isAuthenticated() && Auth.ownedByUser(card) && <button className="main-button" onClick={this.deleteCard}>
-            <i className="fa fa-trash" aria-hidden="true"></i>Delete Your Card
+            <i className="fa fa-trash" aria-hidden="true"></i> Delete Your Card
           </button>}
           {Auth.isAuthenticated() && !Auth.ownedByUser(card) && !this.inCollection() && <button className="main-button" onClick={this.tradeCard}>
-            <i className="fa fa-trash" aria-hidden="true"></i>Trade Cards
+            <i className="fa fa-trash" aria-hidden="true"></i> Trade Cards
           </button>}
           {Auth.isAuthenticated() && !Auth.ownedByUser(card) && this.inCollection() && <button className="main-button" onClick={this.removeCard}>
-            <i className="fa fa-trash" aria-hidden="true"></i>Remove Card
+            <i className="fa fa-trash" aria-hidden="true"></i> Remove Card
           </button>}
         </div>
       </div>

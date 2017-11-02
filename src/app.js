@@ -14,8 +14,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className="container">
-          <h1><Link to="/cards">TR-AID</Link></h1>
+        <div className="container-fluid">
           <Navbar/>
           <main>
             <Routes/>

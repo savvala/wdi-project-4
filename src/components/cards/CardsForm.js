@@ -57,21 +57,7 @@ function CardsForm({ handleSubmit, handleChange, card, errors }) {
               />
               {errors.category && <small className="has-error">{errors.business}</small>}
             </div>
-            <div className={errors.businessAddress ? 'form-group has-error' : 'form-group'}>
-              <label htmlFor="businessAddress"></label>
-              <input
-                type="text"
-                className="form-control"
-                id="businessAddress"
-                name="businessAddress"
-                value={card.businessAddress}
-                onChange={handleChange}
-                placeholder="Business Address"
-                style={styles}
-
-              />
-              {errors.category && <small className="has-error">{errors.email}</small>}
-            </div>
+            
             <div className={errors.email ? 'form-group has-error' : 'form-group'}>
               <label htmlFor="email"></label>
               <input
@@ -86,6 +72,21 @@ function CardsForm({ handleSubmit, handleChange, card, errors }) {
 
               />
               {errors.category && <small className="has-error">{errors.businessAddress}</small>}
+            </div>
+            <div className={errors.businessAddress ? 'form-group has-error' : 'form-group'}>
+              <label htmlFor="businessAddress"></label>
+              <input
+                type="text"
+                className="form-control"
+                id="businessAddress"
+                name="businessAddress"
+                value={card.businessAddress}
+                onChange={handleChange}
+                placeholder="Business Address"
+                style={styles}
+
+              />
+              {errors.category && <small className="has-error">{errors.email}</small>}
             </div>
             <div className={errors.phoneNumber ? 'form-group has-error' : 'form-group'}>
               <label htmlFor="phoneNumber"></label>
